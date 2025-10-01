@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: customer-hijack-app
+  namespace: cn-data-plane-system
+spec:
+  destination:
+    namespace: cn-data-plane-system
+    server: https://kubernetes.default.svc
+  project: cn
+  source:
+    path: .
+    repoURL: https://github.com/Romanecek/argo-clusterResourceWhitelist-test.git
+    targetRevision: HEAD
