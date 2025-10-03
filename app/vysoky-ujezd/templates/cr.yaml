@@ -1,7 +1,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: vysoky-ujezd
+  name: {{ Release.Name }}
 rules:
 - apiGroups: [""]
   resources: ["secrets"]
