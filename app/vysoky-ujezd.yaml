@@ -5,7 +5,7 @@ metadata:
   namespace: cn-data-plane-system
 spec:
   destination:
-    namespace: cn-data-plane-system
+    namespace: vysoky-ujezd
     server: https://kubernetes.default.svc
   project: cn
   source:
