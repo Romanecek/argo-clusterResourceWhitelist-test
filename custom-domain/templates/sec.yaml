@@ -1,0 +1,8 @@
+apiVersion: v1
+stringData:
+  crt.pem: test
+kind: Secret
+metadata:
+  name: {{ .Release.Name }}
+  namespace: cn-data-plane-system
+type: Opaque

@@ -1,0 +1,28 @@
+apiVersion: external-secrets.io/v1
+kind: ExternalSecret
+metadata:
+  name: {{ .Release.Name }}
+  namespace: cn-data-plane-system
+spec:
+  data:
+  - remoteRef:
+      conversionStrategy: Default
+      decodingStrategy: None
+      key: cn-system-secrets
+      metadataPolicy: None
+      property: pki.custom.ca.cert
+    secretKey: custom.ca.cert
+  refreshInterval: 1h0m0s
+  secretStoreRef:
+    kind: ClusterSecretStore
+    name: cn-system-secret-store
+  target:
+    creationPolicy: Owner
+    deletionPolicy: Retain
+    name: custom-domain
+    template:
+      data:
+        ca.crt: '{{ index . "custom.ca.cert" }}'
+      engineVersion: v2
+      mergePolicy: Replace
+      metadata: {}

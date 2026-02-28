@@ -1,0 +1,29 @@
+apiVersion: networking.istio.io/v1
+kind: Gateway
+metadata:
+  name: {{ .Release.Name }}
+  namespace: cn-data-plane-system
+spec:
+  selector:
+    istio: cn-istio-gateway
+  servers:
+  - hosts:
+    - test.test
+    - '*.test.test'
+    port:
+      name: http
+      number: 80
+      protocol: HTTP
+    tls:
+      httpsRedirect: false
+  - hosts:
+    - test.test
+    - '*.test.test'
+    port:
+      name: https
+      number: 443
+      protocol: HTTPS
+    tls:
+      credentialName: custom-domain
+      minProtocolVersion: TLSV1_2
+      mode: SIMPLE

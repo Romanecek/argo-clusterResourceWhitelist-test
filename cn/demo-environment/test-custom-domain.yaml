@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: test-custom-domain
+  namespace: cn-data-plane-system
+spec:
+  destination:
+    namespace: cn-data-plane-system
+    server: https://kubernetes.default.svc
+  project: cn
+  source:
+    path: custom-domain
+    repoURL: https://github.com/Romanecek/argo-clusterResourceWhitelist-test.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      enabled: true
