@@ -7,7 +7,7 @@ spec:
   destination:
     namespace: cn-data-plane-system
     server: https://kubernetes.default.svc
-  project: cn
+  project: custom-domains
   source:
     path: custom-domain
     repoURL: https://github.com/Romanecek/argo-clusterResourceWhitelist-test.git
