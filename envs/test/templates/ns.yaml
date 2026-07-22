@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    codenow.com/namespace-type: cn-application
+    istio-injection: enabled
+  name: {{ .Release.Namespace }}

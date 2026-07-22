@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: test-venkov
+  namespace: cn-data-plane-system
+spec:
+  destination:
+    namespace: test
+    server: https://kubernetes.default.svc
+  project: cn
+  source:
+    path: apps/test/venkov
+    repoURL: https://github.com/Romanecek/argo-clusterResourceWhitelist-test.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      enabled: true

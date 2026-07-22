@@ -1,14 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: vysoky-ujezd
+  name: environment-dev
   namespace: cn-data-plane-system
 spec:
   destination:
-    namespace: vysoky-ujezd
+    namespace: dev
     server: https://kubernetes.default.svc
   project: cn
   source:
-    path: app/vysoky-ujezd
+    path: envs/dev
     repoURL: https://github.com/Romanecek/argo-clusterResourceWhitelist-test.git
     targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      enabled: true
