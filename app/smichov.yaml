@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: smichov
+  namespace: cn-data-plane-system
+spec:
+  destination:
+    namespace: praha
+    server: https://kubernetes.default.svc
+  project: cn
+  source:
+    path: app/smichov
+    repoURL: https://github.com/Romanecek/argo-clusterResourceWhitelist-test.git
+    targetRevision: HEAD
